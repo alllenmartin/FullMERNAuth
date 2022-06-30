@@ -1,13 +1,10 @@
-import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import SignUp from './components/Signup';
-import SignIn from './components/Signin';
+import Signup from './components/Signup';
 
 function App() {
   return (
     <Routes>
-      <Route path='/signup' exact element={<SignUp/>}/>
-      <Route path='/signin' exact element={<SignIn/>}/>
+      <Route path='/signup' exact element={<Signup/>}/>
     </Routes>
 
   );

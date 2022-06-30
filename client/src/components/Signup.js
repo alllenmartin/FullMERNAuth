@@ -12,6 +12,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+//
+import { useState } from 'react';
+import axios from 'axios';
+import {Link, useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -27,8 +31,43 @@ function Copyright(props) {
 }
 
 const theme = createTheme();
+ 
+const SignUp = () => {
+const [data,setData] = useState({
+    firstName:"",
+    lastName:"",
+    email:"",
+    password:""
+});
 
-export default function SignUp() {
+const navigate = useNavigate();
+const [error, setError] = useState("");
+
+const handleChange = ({currentTarget:input}) => {
+    setData({...data, [input.name]: input.value })
+}
+
+const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+        const url = "http://localhost:8012/api/users";
+        const {data:res} = await axios.post(url,data);
+        navigate("/login");
+        console.log(res.message);
+    } catch (error) {
+        if(error.response && error.response.status >= 400 && error.response.status <=500)
+        {
+            setError(error.response.data.message)
+        }
+    }
+
+}
+
+
+}
+
+const SignUp1 = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -129,3 +168,5 @@ export default function SignUp() {
     </ThemeProvider>
   );
 }
+
+export default SignUp;
