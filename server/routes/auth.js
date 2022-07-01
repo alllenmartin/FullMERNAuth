@@ -23,16 +23,17 @@ router.post('/', async (req, res) => {
         
     } catch (error) {
         res.status(500).send({message:"Internal Server Error"});
+        console.log(error);
     }
 })
 
 const validate = (data) => {
     const schema = Joi.object({
-        email: Joi.String.email().label("Email"),
-        password: Joi.String.require().label("Password")
+        email: Joi.string().email().required().label("Email"),
+        password: Joi.string().required().label("Password")
     });
 
-    return schema.valid(data);
+    return schema.validate(data);
 }
 
 module.exports= router

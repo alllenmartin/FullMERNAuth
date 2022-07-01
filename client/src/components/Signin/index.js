@@ -9,8 +9,6 @@ import styles from "./styles.module.css";
  
 const SignUp = () => {
 const [data,setData] = useState({
-    firstName:"",
-    lastName:"",
     email:"",
     password:""
 });
@@ -26,9 +24,10 @@ const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-        const url = "http://localhost:8012/api/users";
+        const url = "http://localhost:8012/api/auth";
         const {data:res} = await axios.post(url,data);
-        navigate("/login");
+        localStorage.getItem('token');
+        window.location ='/';
         console.log(res.message);
     } catch (error) {
         if(error.response && error.response.status >= 400 && error.response.status <=500)
@@ -47,34 +46,16 @@ return (
     <div className={styles.signup_container}>
         <div className={styles.signup_form_container}>
             <div className={styles.left}>
-                <h1>Welcome Back</h1>
-                <Link to="/login">
+                <h1>Create Account</h1>
+                <Link to="/signup">
                     <button type="button" className={styles.white_btn}>
-                        Sing in
+                        Sing up
                     </button>
                 </Link>
             </div>
             <div className={styles.right}>
                 <form className={styles.form_container} onSubmit={handleSubmit}>
-                    <h1>Create Account</h1>
-                    <input
-                        type="text"
-                        placeholder="First Name"
-                        name="firstName"
-                        onChange={handleChange}
-                        value={data.firstName}
-                        required
-                        className={styles.input}
-                    />
-                    <input
-                        type="text"
-                        placeholder="Last Name"
-                        name="lastName"
-                        onChange={handleChange}
-                        value={data.lastName}
-                        required
-                        className={styles.input}
-                    />
+                    <h1>Sign In</h1>
                     <input
                         type="email"
                         placeholder="Email"
@@ -95,7 +76,7 @@ return (
                     />
                     {error && <div className={styles.error_msg}>{error}</div>}
                     <button type="submit" className={styles.green_btn}>
-                        Sing Up
+                        Sing In
                     </button>
                 </form>
             </div>
