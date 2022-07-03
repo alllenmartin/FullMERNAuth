@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 
-exports.generateOTP = () => {
+module.exports = generateOTP = () => {
     let otp = ''
     for(let i =0; i <= 3; i++)
     {
@@ -10,7 +10,9 @@ exports.generateOTP = () => {
     return otp;
 }
 
-modules.exports = async(email, subject, text) => {
+
+
+module.exports = async(email, subject, text) => {
     try {
         const transporter = nodemailer.createTransport(
             {

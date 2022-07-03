@@ -3,7 +3,7 @@ const {User, validate } = require("../models/user");
 const bcrypt = require("bcrypt")
 const Token = require('../models/token')
 const sendEmail = require('../utils/sendEmail');
-const { generateOTP } = require("../utils/sendEmail");
+//const { generateOTP } = require("../utils/sendEmail");
 
 router.post('/', async (req, res) => {
     try {
@@ -33,6 +33,8 @@ router.post('/', async (req, res) => {
         
         
     } catch (error) {
+       
+        console.log(error)
         res.status(500).send({message:"Internal Server Error"});
        
     }
