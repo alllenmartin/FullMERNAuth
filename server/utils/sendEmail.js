@@ -10,8 +10,6 @@ module.exports = generateOTP = () => {
     return otp;
 }
 
-
-
 module.exports = async(email, subject, text) => {
     try {
         const transporter = nodemailer.createTransport(
