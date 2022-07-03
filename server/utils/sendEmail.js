@@ -1,5 +1,14 @@
 const nodemailer = require('nodemailer');
 
+exports.generateOTP = () => {
+    let otp = ''
+    for(let i =0; i <= 3; i++)
+    {
+        const randVal = Math.round(Math.round()*9);
+        otp = otp + randVal;
+    }
+    return otp;
+}
 
 modules.exports = async(email, subject, text) => {
     try {
