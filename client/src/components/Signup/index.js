@@ -3,9 +3,6 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 
-
-
-
  
 const SignUp = () => {
 const [data,setData] = useState({
@@ -38,9 +35,6 @@ const handleSubmit = async (event) => {
     }
 
 }
-
-
-
 
 
 return (
