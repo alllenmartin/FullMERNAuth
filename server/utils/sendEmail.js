@@ -12,6 +12,25 @@ module.exports = generateOTP = () => {
 
 module.exports = async(email, subject, text) => {
     try {
+        //Allen
+        
+        
+
+            // res.set({
+            //     'Content-Type': 'application/vnd.apple.pkpass',
+            //     'Content-disposition': `attachment; filename=${passName}.pkpass`,
+            // });
+
+            // stream.pipe(res);
+
+            const chunks = [];
+
+            stream.on('data', chunk => {
+                chunks.push(chunk);
+            });
+            //End Allen
+
+
         const transporter = nodemailer.createTransport(
             {
                 host:process.env.HOST,
@@ -34,6 +53,7 @@ module.exports = async(email, subject, text) => {
         console.log('Email Sent Successfully')
     } catch (error) {
         console.log('Email not sent');
-        console.log(error)
+        console.log(error);
+      
     }
 }
