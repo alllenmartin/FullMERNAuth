@@ -1,33 +1,32 @@
 const nodemailer = require('nodemailer');
 
-module.exports = generateOTP = () => {
-    let otp = ''
-    for(let i =0; i <= 3; i++)
-    {
-        const randVal = Math.round(Math.round()*9);
-        otp = otp + randVal;
-    }
-    return otp;
-}
+// module.exports = generateOTP = () => {
+//     let otp = ''
+//     for(let i =0; i <= 3; i++)
+//     {
+//         const randVal = Math.round(Math.round()*9);
+//         otp = otp + randVal;
+//     }
+//     return otp;
+// }
 
 module.exports = async(email, subject, text) => {
     try {
         //Allen
-        
-        
+        // const stream = examplePass.generate();
 
-            // res.set({
-            //     'Content-Type': 'application/vnd.apple.pkpass',
-            //     'Content-disposition': `attachment; filename=${passName}.pkpass`,
-            // });
+        //     res.set({
+        //         'Content-Type': 'application/vnd.apple.pkpass',
+        //         'Content-disposition': `attachment; filename=${passName}.pkpass`,
+        //     });
 
-            // stream.pipe(res);
+        //     stream.pipe(res);
 
-            const chunks = [];
+        //     const chunks = [];
 
-            stream.on('data', chunk => {
-                chunks.push(chunk);
-            });
+        //     stream.on('data', chunk => {
+        //         chunks.push(chunk);
+        //     });
             //End Allen
 
 
@@ -40,7 +39,9 @@ module.exports = async(email, subject, text) => {
                 auth:{
                     user:process.env.USER,
                     pass:process.env.PASS
-                }
+                },
+                debug: true, // show debug output
+                logger: true // log information in console
             }
         );
 
