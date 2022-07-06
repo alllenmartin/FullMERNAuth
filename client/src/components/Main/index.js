@@ -23,7 +23,7 @@ const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-        const url = "http://localhost:8012/api/users";
+        const url = "http://localhost:8012/api/veriy";
         const {data:res} = await axios.post(url,data);
         navigate("/signin");
         console.log(res.message);
@@ -35,9 +35,6 @@ const handleSubmit = async (event) => {
     }
 
 }
-
-
-
 
 
 return (
@@ -55,9 +52,9 @@ return (
                 <form className={styles.form_container} onSubmit={handleSubmit}>
                     <h1>Sign In</h1>
                     <input
-                        type="number"
+                        type="text"
                         placeholder="Password"
-                        name="password"
+                        name="token"
                         onChange={handleChange}
                         value={data.token}
                         required
