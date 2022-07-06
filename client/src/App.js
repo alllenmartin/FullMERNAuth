@@ -7,7 +7,7 @@ import Main from './components/Main';
 function App() {
   return (
     <Routes>
-      <Route path='/' exact element={<Main/>}/>
+      <Route path='/verify' exact element={<Main/>}/>
       <Route path='/signup' exact element={<Signup/>}/>
       <Route path='/signin' exact element={<Signin/>}/>
       <Route path='/signin' exact element={<Navigate replace to='/login'/>}/>

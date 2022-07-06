@@ -7,7 +7,7 @@ import styles from "./styles.module.css";
 
 
  
-const SignUp = () => {
+const SignIn = () => {
 const [data,setData] = useState({
     email:"",
     password:""
@@ -85,4 +85,4 @@ return (
 );
 };
 
-export default SignUp;
+export default SignIn;
