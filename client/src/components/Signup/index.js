@@ -12,8 +12,9 @@ const [data,setData] = useState({
     password:""
 });
 
-const navigate = useNavigate();
 const [error, setError] = useState("");
+const [msg, setMsg] = useState("");
+
 
 const handleChange = ({currentTarget:input}) => {
     setData({...data, [input.name]: input.value })
@@ -25,8 +26,7 @@ const handleSubmit = async (event) => {
     try {
         const url = "http://localhost:8012/api/users";
         const {data:res} = await axios.post(url,data);
-        navigate("/signin");
-        console.log(res.message);
+        setMsg(res.message);
     } catch (error) {
         if(error.response && error.response.status >= 400 && error.response.status <=500)
         {
@@ -42,7 +42,7 @@ return (
         <div className={styles.signup_form_container}>
             <div className={styles.left}>
                 <h1>Welcome Back</h1>
-                <Link to="/signin">
+                <Link to="/login">
                     <button type="button" className={styles.white_btn}>
                         Sing in
                     </button>
@@ -88,6 +88,7 @@ return (
                         className={styles.input}
                     />
                     {error && <div className={styles.error_msg}>{error}</div>}
+                    {msg && <div className={styles.success_msg}>{msg}</div>}
                     <button type="submit" className={styles.green_btn}>
                         Sing Up
                     </button>
